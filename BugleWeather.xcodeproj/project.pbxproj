@@ -1,0 +1,511 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		04AE223E0968FA141E48A2F2 /* BugleWeatherWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6960CE5A0CB2EE4E62B3521 /* BugleWeatherWidget.swift */; };
+		1F954F1308CC739745E2A93B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E2B6ABE3C4DD7B38A34AE8 /* ContentView.swift */; };
+		21A7983E7EB0B4BFD34E0C1E /* PreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD116719D52713000771385F /* PreferencesView.swift */; };
+		28FE496AAE996F272DFD41C7 /* BugleCore in Frameworks */ = {isa = PBXBuildFile; productRef = F5034FD29AE693598AD8AE6E /* BugleCore */; };
+		2AB72116BA20B6E18D9E2E90 /* SharedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5077341D48712D99AE15C6 /* SharedStore.swift */; };
+		2D71230469B2F67115A20E38 /* SharedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5077341D48712D99AE15C6 /* SharedStore.swift */; };
+		525101EC4F667AFD2E5F74AF /* LocationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963FA45D226CB02A4DCF5951 /* LocationInfo.swift */; };
+		6A0770159F99FB3E244BF76F /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4C6FD09EAF3CBAC8C18B01 /* WeatherViewModel.swift */; };
+		83475FD0913728493F5CC24C /* BugleWeatherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1882BD10D06A12A9AC514C17 /* BugleWeatherApp.swift */; };
+		9AA98826ABD32EA62DB3AF27 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB11F40AB5918888D4EA117 /* LocationManager.swift */; };
+		AE477CC02CBA7206E1B04FD8 /* LocationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963FA45D226CB02A4DCF5951 /* LocationInfo.swift */; };
+		E05F99F07415516201E7BDF4 /* BugleWeatherWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = C10F2CE0B124A9DBEB04BA38 /* BugleWeatherWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		E7305E060C0FA44BC7329822 /* BugleCore in Frameworks */ = {isa = PBXBuildFile; productRef = 2DFFD7BF88F91E26ECA8FE4D /* BugleCore */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		05A41BD10B9916150344E4AE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 91E8858C0F95D201D5466232 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 73253601B44ED5D012E1C6A4;
+			remoteInfo = BugleWeatherWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		81745D51352846FFA51CA399 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				E05F99F07415516201E7BDF4 /* BugleWeatherWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		0B74B14228040410103C00FF /* BugleWeatherWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BugleWeatherWidget.entitlements; sourceTree = "<group>"; };
+		0D880AEA2009F34ACBFDD2E9 /* BugleCore */ = {isa = PBXFileReference; lastKnownFileType = folder; name = BugleCore; path = BugleCore; sourceTree = SOURCE_ROOT; };
+		13E2B6ABE3C4DD7B38A34AE8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		1882BD10D06A12A9AC514C17 /* BugleWeatherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BugleWeatherApp.swift; sourceTree = "<group>"; };
+		1DB11F40AB5918888D4EA117 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		24E485972544F6910E6AC31A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		4D4C6FD09EAF3CBAC8C18B01 /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
+		7E5DE99F3BCF6084B4944F6E /* BugleWeather.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = BugleWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		963FA45D226CB02A4DCF5951 /* LocationInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInfo.swift; sourceTree = "<group>"; };
+		B6960CE5A0CB2EE4E62B3521 /* BugleWeatherWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BugleWeatherWidget.swift; sourceTree = "<group>"; };
+		C10F2CE0B124A9DBEB04BA38 /* BugleWeatherWidgetExtension.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = BugleWeatherWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD116719D52713000771385F /* PreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesView.swift; sourceTree = "<group>"; };
+		FCC23F1EB147CE083E52B6EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		FEEC1B4B7C666F7912EB9E92 /* BugleWeather.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BugleWeather.entitlements; sourceTree = "<group>"; };
+		FF5077341D48712D99AE15C6 /* SharedStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedStore.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5DD97EA2B02653628D07C3CD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E7305E060C0FA44BC7329822 /* BugleCore in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EC87501610EA4663D117D5DA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28FE496AAE996F272DFD41C7 /* BugleCore in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		010D7F1374887BB75BB2F14D /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				0D880AEA2009F34ACBFDD2E9 /* BugleCore */,
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
+		2C82000824B539CDD345CA58 /* BugleWeatherWidget */ = {
+			isa = PBXGroup;
+			children = (
+				0B74B14228040410103C00FF /* BugleWeatherWidget.entitlements */,
+				B6960CE5A0CB2EE4E62B3521 /* BugleWeatherWidget.swift */,
+				24E485972544F6910E6AC31A /* Info.plist */,
+			);
+			path = BugleWeatherWidget;
+			sourceTree = "<group>";
+		};
+		3D076315F69CCF10AE24FFB7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7E5DE99F3BCF6084B4944F6E /* BugleWeather.app */,
+				C10F2CE0B124A9DBEB04BA38 /* BugleWeatherWidgetExtension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8FFBE5CBD5A889CDEFE8D407 /* BugleWeatherApp */ = {
+			isa = PBXGroup;
+			children = (
+				FEEC1B4B7C666F7912EB9E92 /* BugleWeather.entitlements */,
+				1882BD10D06A12A9AC514C17 /* BugleWeatherApp.swift */,
+				13E2B6ABE3C4DD7B38A34AE8 /* ContentView.swift */,
+				FCC23F1EB147CE083E52B6EC /* Info.plist */,
+				1DB11F40AB5918888D4EA117 /* LocationManager.swift */,
+				CD116719D52713000771385F /* PreferencesView.swift */,
+				4D4C6FD09EAF3CBAC8C18B01 /* WeatherViewModel.swift */,
+			);
+			path = BugleWeatherApp;
+			sourceTree = "<group>";
+		};
+		BC99F11CCB7F5A159049A333 /* SharedSupport */ = {
+			isa = PBXGroup;
+			children = (
+				963FA45D226CB02A4DCF5951 /* LocationInfo.swift */,
+				FF5077341D48712D99AE15C6 /* SharedStore.swift */,
+			);
+			path = SharedSupport;
+			sourceTree = "<group>";
+		};
+		DBF549A457C453B27143C2C3 = {
+			isa = PBXGroup;
+			children = (
+				8FFBE5CBD5A889CDEFE8D407 /* BugleWeatherApp */,
+				2C82000824B539CDD345CA58 /* BugleWeatherWidget */,
+				010D7F1374887BB75BB2F14D /* Packages */,
+				BC99F11CCB7F5A159049A333 /* SharedSupport */,
+				3D076315F69CCF10AE24FFB7 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		73253601B44ED5D012E1C6A4 /* BugleWeatherWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6978C265BB18F80F3221964C /* Build configuration list for PBXNativeTarget "BugleWeatherWidgetExtension" */;
+			buildPhases = (
+				B979B2FACC8EFD2E847B33A7 /* Sources */,
+				5DD97EA2B02653628D07C3CD /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BugleWeatherWidgetExtension;
+			packageProductDependencies = (
+				2DFFD7BF88F91E26ECA8FE4D /* BugleCore */,
+			);
+			productName = BugleWeatherWidgetExtension;
+			productReference = C10F2CE0B124A9DBEB04BA38 /* BugleWeatherWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		DD8968350A70565CF650118E /* BugleWeather */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9DB926745C2290520225D4F8 /* Build configuration list for PBXNativeTarget "BugleWeather" */;
+			buildPhases = (
+				6A88A9F12D3FF606E489C5A9 /* Sources */,
+				EC87501610EA4663D117D5DA /* Frameworks */,
+				81745D51352846FFA51CA399 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				76919D4C91EB3EA2D4B10C94 /* PBXTargetDependency */,
+			);
+			name = BugleWeather;
+			packageProductDependencies = (
+				F5034FD29AE693598AD8AE6E /* BugleCore */,
+			);
+			productName = BugleWeather;
+			productReference = 7E5DE99F3BCF6084B4944F6E /* BugleWeather.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		91E8858C0F95D201D5466232 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					73253601B44ED5D012E1C6A4 = {
+						ProvisioningStyle = Automatic;
+					};
+					DD8968350A70565CF650118E = {
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 1CF09DEFEF971D4BB724546B /* Build configuration list for PBXProject "BugleWeather" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = DBF549A457C453B27143C2C3;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				6E1D44BB647A60936A56843E /* XCLocalSwiftPackageReference "BugleCore" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 3D076315F69CCF10AE24FFB7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DD8968350A70565CF650118E /* BugleWeather */,
+				73253601B44ED5D012E1C6A4 /* BugleWeatherWidgetExtension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6A88A9F12D3FF606E489C5A9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				83475FD0913728493F5CC24C /* BugleWeatherApp.swift in Sources */,
+				1F954F1308CC739745E2A93B /* ContentView.swift in Sources */,
+				525101EC4F667AFD2E5F74AF /* LocationInfo.swift in Sources */,
+				9AA98826ABD32EA62DB3AF27 /* LocationManager.swift in Sources */,
+				21A7983E7EB0B4BFD34E0C1E /* PreferencesView.swift in Sources */,
+				2AB72116BA20B6E18D9E2E90 /* SharedStore.swift in Sources */,
+				6A0770159F99FB3E244BF76F /* WeatherViewModel.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B979B2FACC8EFD2E847B33A7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04AE223E0968FA141E48A2F2 /* BugleWeatherWidget.swift in Sources */,
+				AE477CC02CBA7206E1B04FD8 /* LocationInfo.swift in Sources */,
+				2D71230469B2F67115A20E38 /* SharedStore.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		76919D4C91EB3EA2D4B10C94 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 73253601B44ED5D012E1C6A4 /* BugleWeatherWidgetExtension */;
+			targetProxy = 05A41BD10B9916150344E4AE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		30570BF5E9FF6121944056E9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_ENTITLEMENTS = BugleWeatherWidget/BugleWeatherWidget.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = BugleWeatherWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.charleyberno.BugleWeather.widget;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		369E6D4DBBFB307DF86C45CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = BugleWeatherApp/BugleWeather.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = BugleWeatherApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.charleyberno.BugleWeather;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		434F2B16E0CFADDC56D762E2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		88D7A74AEA8B24DB122CF8D4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_ENTITLEMENTS = BugleWeatherWidget/BugleWeatherWidget.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = BugleWeatherWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.charleyberno.BugleWeather.widget;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		AA9EEECFE145102A62854EDE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = BugleWeatherApp/BugleWeather.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = BugleWeatherApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.charleyberno.BugleWeather;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		C5ACCBDDE2E33EC17D4852BC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1CF09DEFEF971D4BB724546B /* Build configuration list for PBXProject "BugleWeather" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C5ACCBDDE2E33EC17D4852BC /* Debug */,
+				434F2B16E0CFADDC56D762E2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		6978C265BB18F80F3221964C /* Build configuration list for PBXNativeTarget "BugleWeatherWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				88D7A74AEA8B24DB122CF8D4 /* Debug */,
+				30570BF5E9FF6121944056E9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		9DB926745C2290520225D4F8 /* Build configuration list for PBXNativeTarget "BugleWeather" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA9EEECFE145102A62854EDE /* Debug */,
+				369E6D4DBBFB307DF86C45CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		6E1D44BB647A60936A56843E /* XCLocalSwiftPackageReference "BugleCore" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = BugleCore;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2DFFD7BF88F91E26ECA8FE4D /* BugleCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = BugleCore;
+		};
+		F5034FD29AE693598AD8AE6E /* BugleCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = BugleCore;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 91E8858C0F95D201D5466232 /* Project object */;
+}

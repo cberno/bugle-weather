@@ -1,0 +1,12 @@
+{
+  "": {
+    "swift-dependencies": "/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCorePackageTests.build/primary.swiftdeps"
+  },
+  "/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCorePackageTests.derived/runner.swift": {
+    "dependencies": "/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCorePackageTests.build/runner.d",
+    "object": "/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCorePackageTests.build/runner.swift.o",
+    "swiftmodule": "/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCorePackageTests.build/runner~partial.swiftmodule",
+    "swift-dependencies": "/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCorePackageTests.build/runner.swiftdeps",
+    "diagnostics": "/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCorePackageTests.build/runner.dia"
+  }
+}

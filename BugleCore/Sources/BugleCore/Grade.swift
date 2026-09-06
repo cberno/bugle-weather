@@ -105,23 +105,29 @@ public struct GradeReport: Codable, Equatable, Sendable {
     }
 
     public var primaryFactor: FactorAssessment? {
-        factors.min { lhs, rhs in
-            if lhs.grade != rhs.grade { return lhs.grade < rhs.grade }
-            return GradeReport.factorPriority(lhs.factor) < GradeReport.factorPriority(rhs.factor)
+        guard let overall = factors.map(\.grade).min() else { return nil }
+        let tied = factors.filter { $0.grade == overall }
+
+        if overall < .aPlus, let alert = tied.first(where: { $0.factor == .alerts }) {
+            return alert
+        }
+
+        return tied.min { lhs, rhs in
+            GradeReport.factorPriority(lhs.factor) < GradeReport.factorPriority(rhs.factor)
         }
     }
 
     private static func factorPriority(_ factor: WeatherFactor) -> Int {
         switch factor {
-        case .alerts: 0
-        case .heat: 1
-        case .cold: 2
-        case .conditions: 3
-        case .precipitation: 4
-        case .temperature: 5
-        case .humidity: 6
-        case .wind: 7
-        case .sun: 8
+        case .heat: 0
+        case .cold: 1
+        case .conditions: 2
+        case .precipitation: 3
+        case .temperature: 4
+        case .humidity: 5
+        case .wind: 6
+        case .sun: 7
+        case .alerts: 8
         }
     }
 }

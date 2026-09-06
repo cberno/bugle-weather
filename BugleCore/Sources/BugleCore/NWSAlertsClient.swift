@@ -21,7 +21,13 @@ public struct NWSAlertsClient: Sendable {
         }
         let raw = try JSONDecoder().decode(NWSResponse.self, from: data)
         return raw.features.map {
-            WeatherAlert(event: $0.properties.event, headline: $0.properties.headline ?? "", severity: $0.properties.severity)
+            WeatherAlert(
+                event: $0.properties.event,
+                headline: $0.properties.headline ?? "",
+                severity: $0.properties.severity,
+                startsAt: $0.properties.onset ?? $0.properties.effective,
+                endsAt: $0.properties.ends ?? $0.properties.expires
+            )
         }
     }
 }
@@ -35,5 +41,9 @@ private struct NWSResponse: Decodable {
         let event: String
         let headline: String?
         let severity: String?
+        let effective: String?
+        let onset: String?
+        let expires: String?
+        let ends: String?
     }
 }

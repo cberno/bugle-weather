@@ -46,13 +46,17 @@ Every factor must return:
 
 Overall grade is the worst meaningful factor. Minor flaws do not add together as points.
 
-## Safety invariants
+## Safety / alert invariants
 
 - Rain alone never creates F.
-- NWS advisory makes the day no better than D.
-- NWS warning makes the day F.
+- Alert effects are based on overlap with the 8 AM–8 PM local usable-day window.
+- NWS Watch is informational only; actual forecast conditions determine the grade.
+- NWS Advisory caps the day at D only with at least 2 hours of usable-day overlap.
+- NWS Warning makes the day F when it overlaps the usable day; an entirely overnight warning is informational for the daytime grade.
+- NWS Statement / other products are informational only.
+- If warning/advisory timing is unavailable, use the conservative original Bugle fallback.
 - Heat index 105°F+ makes the day F.
-- User preferences cannot weaken alert rules.
+- User preferences cannot weaken safety-alert rules.
 
 ## Widget
 

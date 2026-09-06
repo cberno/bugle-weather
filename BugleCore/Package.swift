@@ -8,10 +8,12 @@ let package = Package(
         .macOS(.v13)
     ],
     products: [
-        .library(name: "BugleCore", targets: ["BugleCore"])
+        .library(name: "BugleCore", targets: ["BugleCore"]),
+        .executable(name: "bugle-backtest", targets: ["BugleBacktest"])
     ],
     targets: [
         .target(name: "BugleCore"),
+        .executableTarget(name: "BugleBacktest", dependencies: ["BugleCore"]),
         .testTarget(name: "BugleCoreTests", dependencies: ["BugleCore"])
     ]
 )

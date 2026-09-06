@@ -1,0 +1,3 @@
+module BugleCore {
+    header "/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/include/BugleCore-Swift.h"
+}

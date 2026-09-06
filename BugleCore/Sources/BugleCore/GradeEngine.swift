@@ -11,7 +11,7 @@ public struct BugleGradeEngine: Sendable {
         let hours = day.usableHours.isEmpty ? day.hourly : day.usableHours
 
         let assessments = [
-            alertAssessment(alerts),
+            alertAssessment(alerts, day: day),
             heatAssessment(hours),
             coldAssessment(hours),
             temperatureAssessment(day.highF, bias: preferences.temperatureBias),
@@ -31,16 +31,16 @@ public struct BugleGradeEngine: Sendable {
             overall = .a
         }
 
-        let primary = assessments.min { lhs, rhs in
-            if lhs.grade != rhs.grade { return lhs.grade < rhs.grade }
-            return priority(lhs.factor) < priority(rhs.factor)
-        }
+        let primary = primaryAssessment(in: assessments, overall: overall)
+        let editorial = overall == .aPlus
+            ? positiveEditorial(day: day, hours: hours)
+            : (primary?.reason ?? "A broadly usable day.")
 
         return GradeReport(
             dateKey: day.dateKey,
             grade: overall,
             verdict: verdict(for: overall, primary: primary?.factor),
-            editorial: primary?.reason ?? "A broadly usable day.",
+            editorial: editorial,
             highF: day.highF,
             lowF: day.lowF,
             factors: assessments
@@ -268,28 +268,150 @@ public struct BugleGradeEngine: Sendable {
         return FactorAssessment(factor: .conditions, grade: worst.0, reason: worst.1)
     }
 
-    private func alertAssessment(_ alerts: [WeatherAlert]) -> FactorAssessment {
-        var worst: (WeatherGrade, String) = (.aPlus, "No active weather alerts.")
+    private func alertAssessment(_ alerts: [WeatherAlert], day: ForecastDay) -> FactorAssessment {
+        // Alerts are context, not a blunt proxy for the whole day.
+        //
+        // - Watch: informational only. A broad-area possibility should not tank
+        //   an otherwise beautiful day.
+        // - Advisory: caps at D only when it materially overlaps the usable
+        //   8am–8pm day (2+ hours).
+        // - Warning: F only when it overlaps the usable day at all.
+        // - Statement/other products: informational only.
+        //
+        // If timing is unavailable, warnings/advisories fall back to the
+        // conservative original Bugle behavior; watches remain informational.
+        var worst: (WeatherGrade, String) = (.aPlus, "No grade-changing weather alerts.")
+        var informational: [String] = []
+
         for alert in alerts {
             let event = alert.event.lowercased()
-            let severity = (alert.severity ?? "").lowercased()
+            let overlap = usableDayOverlapMinutes(alert: alert, day: day)
+            let hasKnownTiming =
+                alert.startsAt.flatMap(parseISO8601) != nil ||
+                alert.endsAt.flatMap(parseISO8601) != nil
             let candidate: WeatherGrade?
-            if event.contains("warning") { candidate = .f }
-            else if event.contains("advisory") { candidate = .d }
-            else if event.contains("watch") { candidate = .c }
-            else if severity == "extreme" { candidate = .f }
-            else if severity == "severe" { candidate = .d }
-            else if severity == "moderate" { candidate = .c }
-            else { candidate = nil }
+
+            if event.contains("warning") {
+                if hasKnownTiming {
+                    candidate = overlap > 0 ? .f : nil
+                } else {
+                    candidate = .f
+                }
+            } else if event.contains("advisory") {
+                if hasKnownTiming {
+                    candidate = overlap >= 120 ? .d : nil
+                } else {
+                    candidate = .d
+                }
+            } else {
+                // Watches and statements are surfaced, but the observed/forecast
+                // weather itself determines the grade.
+                candidate = nil
+            }
 
             if let candidate, candidate < worst.0 {
-                worst = (candidate, alert.event + ".")
+                let timing = alertTimingPhrase(alert: alert, overlapMinutes: overlap)
+                worst = (candidate, alert.event + timing + ".")
+            } else if !alert.event.isEmpty {
+                informational.append(alert.event + alertTimingPhrase(alert: alert, overlapMinutes: overlap))
             }
         }
+
+        if worst.0 == .aPlus, let first = informational.first {
+            return FactorAssessment(
+                factor: .alerts,
+                grade: .aPlus,
+                reason: first + " (informational)."
+            )
+        }
+
         return FactorAssessment(factor: .alerts, grade: worst.0, reason: worst.1)
     }
 
+    private func usableDayOverlapMinutes(alert: WeatherAlert, day: ForecastDay) -> Double {
+        guard let window = usableDayWindow(for: day) else { return 0 }
+
+        let start = alert.startsAt.flatMap(parseISO8601)
+        let end = alert.endsAt.flatMap(parseISO8601)
+
+        // NWS active alerts normally provide both. If one edge is absent, use
+        // the usable-day boundary so we can still make a sensible overlap test.
+        guard start != nil || end != nil else { return 0 }
+        let alertStart = start ?? window.start
+        let alertEnd = end ?? window.end
+        guard alertEnd > alertStart else { return 0 }
+
+        let overlapStart = max(alertStart, window.start)
+        let overlapEnd = min(alertEnd, window.end)
+        guard overlapEnd > overlapStart else { return 0 }
+        return overlapEnd.timeIntervalSince(overlapStart) / 60
+    }
+
+    private func usableDayWindow(for day: ForecastDay) -> (start: Date, end: Date)? {
+        let zone = TimeZone(identifier: day.timezone) ?? TimeZone(secondsFromGMT: 0)!
+        var calendar = Calendar(identifier: .gregorian)
+        calendar.timeZone = zone
+
+        let parts = day.dateKey.split(separator: "-").compactMap { Int($0) }
+        guard parts.count == 3 else { return nil }
+
+        var startComponents = DateComponents()
+        startComponents.calendar = calendar
+        startComponents.timeZone = zone
+        startComponents.year = parts[0]
+        startComponents.month = parts[1]
+        startComponents.day = parts[2]
+        startComponents.hour = 8
+
+        var endComponents = startComponents
+        endComponents.hour = 20
+
+        guard let start = calendar.date(from: startComponents),
+              let end = calendar.date(from: endComponents) else { return nil }
+        return (start, end)
+    }
+
+    private func parseISO8601(_ raw: String) -> Date? {
+        let formatter = ISO8601DateFormatter()
+        formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+        if let date = formatter.date(from: raw) { return date }
+
+        formatter.formatOptions = [.withInternetDateTime]
+        return formatter.date(from: raw)
+    }
+
+    private func alertTimingPhrase(alert: WeatherAlert, overlapMinutes: Double) -> String {
+        guard alert.startsAt != nil || alert.endsAt != nil else { return "" }
+        if overlapMinutes <= 0 { return " outside the daytime grading window" }
+        let hours = overlapMinutes / 60
+        if hours < 1.5 { return " overlapping about 1 daytime hour" }
+        return " overlapping about \(Int(hours.rounded())) daytime hours"
+    }
+
     // MARK: - Helpers
+
+
+    private func primaryAssessment(in assessments: [FactorAssessment], overall: WeatherGrade) -> FactorAssessment? {
+        let tied = assessments.filter { $0.grade == overall }
+
+        // A real warning/advisory should lead the explanation. An informational
+        // A+ alert should not become the headline on a beautiful day.
+        if overall < .aPlus, let alert = tied.first(where: { $0.factor == .alerts }) {
+            return alert
+        }
+
+        return tied.min { lhs, rhs in
+            priority(lhs.factor) < priority(rhs.factor)
+        }
+    }
+
+    private func positiveEditorial(day: ForecastDay, hours: [HourlyWeather]) -> String {
+        let dewPoints = hours.map(\.dewPointF).sorted(by: >)
+        let sustainedDew = dewPoints.isEmpty ? 50 : dewPoints[min(2, dewPoints.count - 1)]
+        let maxWind = hours.map(\.windSpeedMph).max() ?? day.windSpeedMaxMph
+        let sunPct = day.sunshineRatio * 100
+        return "High \(whole(day.highF))°F, dry, dew point near \(whole(sustainedDew))°F, winds to \(whole(maxWind)) mph, with about \(whole(sunPct))% sunshine."
+    }
 
     private func isWetHour(_ hour: HourlyWeather) -> Bool {
         hour.precipitationProbability >= 50 || hour.precipitationIn >= 0.02 || hour.snowfallIn >= 0.05
@@ -303,15 +425,15 @@ public struct BugleGradeEngine: Sendable {
 
     private func priority(_ factor: WeatherFactor) -> Int {
         switch factor {
-        case .alerts: 0
-        case .heat: 1
-        case .cold: 2
-        case .conditions: 3
-        case .precipitation: 4
-        case .temperature: 5
-        case .humidity: 6
-        case .wind: 7
-        case .sun: 8
+        case .heat: 0
+        case .cold: 1
+        case .conditions: 2
+        case .precipitation: 3
+        case .temperature: 4
+        case .humidity: 5
+        case .wind: 6
+        case .sun: 7
+        case .alerts: 8
         }
     }
 

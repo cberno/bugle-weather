@@ -1,0 +1,54 @@
+{
+  "": {
+    "swift-dependencies": "/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/primary.swiftdeps"
+  },
+  "/Users/leahsaris/bugle-weather/BugleCore/Sources/BugleCore/ComfortMath.swift": {
+    "dependencies": "/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/ComfortMath.d",
+    "object": "/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/ComfortMath.swift.o",
+    "swiftmodule": "/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/ComfortMath~partial.swiftmodule",
+    "swift-dependencies": "/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/ComfortMath.swiftdeps",
+    "diagnostics": "/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/ComfortMath.dia"
+  },
+  "/Users/leahsaris/bugle-weather/BugleCore/Sources/BugleCore/Grade.swift": {
+    "dependencies": "/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/Grade.d",
+    "object": "/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/Grade.swift.o",
+    "swiftmodule": "/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/Grade~partial.swiftmodule",
+    "swift-dependencies": "/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/Grade.swiftdeps",
+    "diagnostics": "/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/Grade.dia"
+  },
+  "/Users/leahsaris/bugle-weather/BugleCore/Sources/BugleCore/GradeEngine.swift": {
+    "dependencies": "/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/GradeEngine.d",
+    "object": "/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/GradeEngine.swift.o",
+    "swiftmodule": "/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/GradeEngine~partial.swiftmodule",
+    "swift-dependencies": "/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/GradeEngine.swiftdeps",
+    "diagnostics": "/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/GradeEngine.dia"
+  },
+  "/Users/leahsaris/bugle-weather/BugleCore/Sources/BugleCore/NWSAlertsClient.swift": {
+    "dependencies": "/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/NWSAlertsClient.d",
+    "object": "/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/NWSAlertsClient.swift.o",
+    "swiftmodule": "/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/NWSAlertsClient~partial.swiftmodule",
+    "swift-dependencies": "/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/NWSAlertsClient.swiftdeps",
+    "diagnostics": "/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/NWSAlertsClient.dia"
+  },
+  "/Users/leahsaris/bugle-weather/BugleCore/Sources/BugleCore/OpenMeteoClient.swift": {
+    "dependencies": "/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/OpenMeteoClient.d",
+    "object": "/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/OpenMeteoClient.swift.o",
+    "swiftmodule": "/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/OpenMeteoClient~partial.swiftmodule",
+    "swift-dependencies": "/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/OpenMeteoClient.swiftdeps",
+    "diagnostics": "/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/OpenMeteoClient.dia"
+  },
+  "/Users/leahsaris/bugle-weather/BugleCore/Sources/BugleCore/WeatherModels.swift": {
+    "dependencies": "/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/WeatherModels.d",
+    "object": "/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/WeatherModels.swift.o",
+    "swiftmodule": "/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/WeatherModels~partial.swiftmodule",
+    "swift-dependencies": "/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/WeatherModels.swiftdeps",
+    "diagnostics": "/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/WeatherModels.dia"
+  },
+  "/Users/leahsaris/bugle-weather/BugleCore/Sources/BugleCore/WeatherService.swift": {
+    "dependencies": "/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/WeatherService.d",
+    "object": "/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/WeatherService.swift.o",
+    "swiftmodule": "/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/WeatherService~partial.swiftmodule",
+    "swift-dependencies": "/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/WeatherService.swiftdeps",
+    "diagnostics": "/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/WeatherService.dia"
+  }
+}

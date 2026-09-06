@@ -1,4 +1,4 @@
-# Bugle Weather — v0.1 starter
+# Bugle Weather — v0.3 starter
 
 A tiny iPhone weather app whose main output is one deterministic, personalized grade for the day: **A+ through F**.
 
@@ -14,7 +14,7 @@ A tiny iPhone weather app whose main output is one deterministic, personalized g
 - Summer rules: heat index, humidity/dew point, storms.
 - Explainable factor-by-factor grading.
 - Shared App Group storage so app preferences/location and widget stay in sync.
-- 15 deterministic unit tests for the grading engine.
+- 22 deterministic unit tests for the grading engine, including time-aware alert behavior.
 
 ## Grading philosophy
 
@@ -62,10 +62,42 @@ Weather data: Open-Meteo. The app includes an attribution link in Preferences.
 
 NWS alerts: `api.weather.gov/alerts/active?point=lat,lon` for U.S. coordinates.
 
+Alert behavior is deliberately time-aware:
+- **Watch:** informational only; the forecast weather itself determines the grade.
+- **Advisory:** caps at D only when it overlaps at least 2 hours of the 8 AM–8 PM usable day.
+- **Warning:** F only when it overlaps the usable day. A warning entirely overnight is surfaced but does not tank the daytime grade.
+- **Statement / other:** informational only.
+- If NWS timing fields are missing, warning/advisory fall back to conservative grading.
+
+## Calibration backtest
+
+A command-line calibration tool is included in `BugleCore`. It fetches realized historical weather from Open-Meteo and runs the exact same `BugleGradeEngine` used by the app/widget.
+
+From `BugleCore/`:
+
+```bash
+swift run bugle-backtest
+```
+
+Defaults: Chevy Chase / Washington, DC (`38.96, -77.08`) and 2024-01-01 through 2025-12-31.
+
+Custom example:
+
+```bash
+swift run bugle-backtest --lat 38.96 --lon -77.08 --start 2025-01-01 --end 2025-12-31
+```
+
+It prints the +/- grade distribution, A/B/C/D/F family mix, A+ and F frequency, ten best/worst days, and monthly grade mix. Historical NWS alerts are intentionally excluded from this calibration pass; the tool is for tuning the physical-weather rubric.
+
 ## Next engineering passes
 
-1. Backtest the rubric against historical/historical-forecast weather to tune grade distribution.
+1. Run the DC calibration and tune thresholds until the distribution and sample days feel Bugle-right.
 2. Add location search / pinned locations.
 3. Improve deterministic editorial strings by combining the two most important factors.
 4. Add a medium widget only if it earns its keep.
 5. App Store icon, screenshots, privacy text, and release signing.
+
+### v0.4 calibration notes
+- Keeps v0.3 time-aware alert grading.
+- Improves A+ editorial copy so ideal days describe the weather rather than saying there are no alerts.
+- Backtest now reports primary grade drivers plus D/F and winter D/F drivers for threshold calibration.

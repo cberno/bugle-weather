@@ -1,23 +1,28 @@
-BugleCore deterministic grading engine
-Validation run: 2026-09-06
+Bugle Weather v0.3 core validation
+Date: 2026-09-06
 
-15 tests passed, 0 failures.
+swift build: PASS
+swift test: PASS
+
+22 tests executed, 0 failures.
 
 Coverage includes:
-- perfect A+ day
-- warm B day
-- 94°F C+ day
-- sticky/humid C day
-- brief rain B
-- on-and-off rain C
-- rain most of day D+
-- 105°F+ heat-index F
-- sunny 42°F winter B−
-- raw cold C
-- freezing rain D+
-- NWS advisory D
-- NWS warning F
-- warmer temperature preference improves a warm/dry day
-- humidity tolerance improves a muggy day
+- A+ ideal weather
+- warm/hot thresholds
+- heat index F
+- sticky humidity
+- brief / intermittent / all-day rain
+- sunny winter cold
+- raw cold
+- freezing rain
+- preference shifts
+- statements informational
+- watches informational
+- evening watch does not alter daytime grade
+- short / overnight advisory does not tank the day
+- 2+ hour daytime advisory caps at D
+- overnight warning does not tank the day
+- daytime warning is F
+- conservative fallback for untimed advisory/warning
 
-The Swift package also compiles cleanly on the available Swift 6.2.1 toolchain.
+The iOS/Xcode app itself must still be built on macOS/Xcode.

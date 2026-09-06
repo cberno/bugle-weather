@@ -9,6 +9,14 @@ final class GradeEngineTests: XCTestCase {
         XCTAssertEqual(engine.grade(day: day).grade, .aPlus)
     }
 
+    func testPerfectDayEditorialDescribesWeatherNotAlerts() {
+        let day = makeDay(high: 72, low: 58, dew: 50, sun: 0.80, wind: 5, gust: 10)
+        let report = engine.grade(day: day)
+        XCTAssertEqual(report.grade, .aPlus)
+        XCTAssertTrue(report.editorial.contains("High 72°F"))
+        XCTAssertFalse(report.editorial.lowercased().contains("alert"))
+    }
+
     func testGoodButWarmDayIsB() {
         let day = makeDay(high: 90, low: 70, temp: 84, humidity: 30, dew: 52, sun: 0.75, wind: 5, gust: 10)
         XCTAssertEqual(engine.grade(day: day).grade, .b)
@@ -70,6 +78,93 @@ final class GradeEngineTests: XCTestCase {
         let day = makeDay(high: 72, low: 58, dew: 50, sun: 0.80)
         let report = engine.grade(day: day, alerts: [.init(event: "Severe Thunderstorm Warning")])
         XCTAssertEqual(report.grade, .f)
+    }
+
+    func testWatchIsInformationalOnly() {
+        let day = makeDay(high: 72, low: 58, dew: 50, sun: 0.80)
+        let baseline = engine.grade(day: day).grade
+        let report = engine.grade(day: day, alerts: [.init(event: "Severe Thunderstorm Watch")])
+        XCTAssertEqual(report.grade, baseline)
+        XCTAssertEqual(report.factors.first(where: { $0.factor == .alerts })?.grade, .aPlus)
+    }
+
+    func testEveningWatchDoesNotChangeDayGrade() {
+        let day = makeDay(high: 72, low: 58, dew: 50, sun: 0.80)
+        let baseline = engine.grade(day: day).grade
+        let report = engine.grade(
+            day: day,
+            alerts: [.init(
+                event: "Severe Thunderstorm Watch",
+                startsAt: "2026-09-06T20:00:00Z",
+                endsAt: "2026-09-06T23:00:00Z"
+            )]
+        )
+        XCTAssertEqual(report.grade, baseline)
+    }
+
+    func testShortEveningAdvisoryDoesNotTankDay() {
+        let day = makeDay(high: 72, low: 58, dew: 50, sun: 0.80)
+        let baseline = engine.grade(day: day).grade
+        let report = engine.grade(
+            day: day,
+            alerts: [.init(
+                event: "Heat Advisory",
+                startsAt: "2026-09-06T19:00:00Z",
+                endsAt: "2026-09-06T20:00:00Z"
+            )]
+        )
+        XCTAssertEqual(report.grade, baseline)
+    }
+
+    func testMaterialDaytimeAdvisoryCapsAtD() {
+        let day = makeDay(high: 72, low: 58, dew: 50, sun: 0.80)
+        let report = engine.grade(
+            day: day,
+            alerts: [.init(
+                event: "Heat Advisory",
+                startsAt: "2026-09-06T15:00:00Z",
+                endsAt: "2026-09-06T18:00:00Z"
+            )]
+        )
+        XCTAssertEqual(report.grade, .d)
+    }
+
+    func testNighttimeWarningDoesNotTankDay() {
+        let day = makeDay(high: 72, low: 58, dew: 50, sun: 0.80)
+        let baseline = engine.grade(day: day).grade
+        let report = engine.grade(
+            day: day,
+            alerts: [.init(
+                event: "Severe Thunderstorm Warning",
+                startsAt: "2026-09-06T21:00:00Z",
+                endsAt: "2026-09-06T22:00:00Z"
+            )]
+        )
+        XCTAssertEqual(report.grade, baseline)
+    }
+
+    func testDaytimeWarningIsF() {
+        let day = makeDay(high: 72, low: 58, dew: 50, sun: 0.80)
+        let report = engine.grade(
+            day: day,
+            alerts: [.init(
+                event: "Severe Thunderstorm Warning",
+                startsAt: "2026-09-06T18:30:00Z",
+                endsAt: "2026-09-06T19:15:00Z"
+            )]
+        )
+        XCTAssertEqual(report.grade, .f)
+    }
+
+    func testStatementDoesNotChangeGradeEvenIfModerate() {
+        let day = makeDay(high: 72, low: 58, dew: 50, sun: 0.80)
+        let baseline = engine.grade(day: day).grade
+        let report = engine.grade(
+            day: day,
+            alerts: [.init(event: "Beach Hazards Statement", severity: "Moderate")]
+        )
+        XCTAssertEqual(report.grade, baseline)
+        XCTAssertEqual(report.factors.first(where: { $0.factor == .alerts })?.grade, .aPlus)
     }
 
     func testWarmPreferenceCanImproveWarmDryDay() {

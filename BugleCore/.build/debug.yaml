@@ -1,0 +1,168 @@
+client:
+  name: basic
+  file-system: device-agnostic
+tools: {}
+targets:
+  "BugleBacktest-arm64-apple-macosx-debug.module": ["<BugleBacktest-arm64-apple-macosx-debug.module>"]
+  "BugleCore-arm64-apple-macosx-debug.module": ["<BugleCore-arm64-apple-macosx-debug.module>"]
+  "BugleCorePackageTests-arm64-apple-macosx-debug.module": ["<BugleCorePackageTests-arm64-apple-macosx-debug.module>"]
+  "BugleCorePackageTests-arm64-apple-macosx-debug.test": ["<BugleCorePackageTests-arm64-apple-macosx-debug.test>"]
+  "BugleCoreTests-arm64-apple-macosx-debug.module": ["<BugleCoreTests-arm64-apple-macosx-debug.module>"]
+  "PackageStructure": ["<PackageStructure>"]
+  "bugle-backtest-arm64-apple-macosx-debug.exe": ["<bugle-backtest-arm64-apple-macosx-debug.exe>"]
+  "main": ["<BugleBacktest-arm64-apple-macosx-debug.module>","<BugleCore-arm64-apple-macosx-debug.module>","<bugle-backtest-arm64-apple-macosx-debug.exe>"]
+  "test": ["<BugleBacktest-arm64-apple-macosx-debug.module>","<BugleCore-arm64-apple-macosx-debug.module>","<BugleCorePackageTests-arm64-apple-macosx-debug.test>","<BugleCoreTests-arm64-apple-macosx-debug.module>","<bugle-backtest-arm64-apple-macosx-debug.exe>"]
+default: "main"
+nodes:
+  "/Users/leahsaris/bugle-weather/BugleCore/Sources/BugleBacktest/":
+    is-directory-structure: true
+    content-exclusion-patterns: [".git",".build"]
+  "/Users/leahsaris/bugle-weather/BugleCore/Sources/BugleCore/":
+    is-directory-structure: true
+    content-exclusion-patterns: [".git",".build"]
+  "/Users/leahsaris/bugle-weather/BugleCore/Tests/BugleCoreTests/":
+    is-directory-structure: true
+    content-exclusion-patterns: [".git",".build"]
+  "/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/bugle-backtest":
+    is-mutated: true
+commands:
+  "/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleBacktest.build/sources":
+    tool: write-auxiliary-file
+    inputs: ["<sources-file-list>","/Users/leahsaris/bugle-weather/BugleCore/Sources/BugleBacktest/main.swift"]
+    outputs: ["/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleBacktest.build/sources"]
+    description: "Write auxiliary file /Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleBacktest.build/sources"
+
+  "/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/sources":
+    tool: write-auxiliary-file
+    inputs: ["<sources-file-list>","/Users/leahsaris/bugle-weather/BugleCore/Sources/BugleCore/ComfortMath.swift","/Users/leahsaris/bugle-weather/BugleCore/Sources/BugleCore/Grade.swift","/Users/leahsaris/bugle-weather/BugleCore/Sources/BugleCore/GradeEngine.swift","/Users/leahsaris/bugle-weather/BugleCore/Sources/BugleCore/NWSAlertsClient.swift","/Users/leahsaris/bugle-weather/BugleCore/Sources/BugleCore/OpenMeteoClient.swift","/Users/leahsaris/bugle-weather/BugleCore/Sources/BugleCore/WeatherModels.swift","/Users/leahsaris/bugle-weather/BugleCore/Sources/BugleCore/WeatherService.swift"]
+    outputs: ["/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/sources"]
+    description: "Write auxiliary file /Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/sources"
+
+  "/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCorePackageTests.build/sources":
+    tool: write-auxiliary-file
+    inputs: ["<sources-file-list>","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCorePackageTests.derived/runner.swift"]
+    outputs: ["/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCorePackageTests.build/sources"]
+    description: "Write auxiliary file /Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCorePackageTests.build/sources"
+
+  "/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCorePackageTests.derived/runner.swift":
+    tool: test-entry-point-tool
+    inputs: []
+    outputs: ["/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCorePackageTests.derived/runner.swift"]
+
+  "/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCorePackageTests.product/Objects.LinkFileList":
+    tool: write-auxiliary-file
+    inputs: ["<link-file-list>","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/ComfortMath.swift.o","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/Grade.swift.o","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/GradeEngine.swift.o","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/NWSAlertsClient.swift.o","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/OpenMeteoClient.swift.o","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/WeatherModels.swift.o","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/WeatherService.swift.o","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCorePackageTests.build/runner.swift.o","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCoreTests.build/GradeEngineTests.swift.o"]
+    outputs: ["/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCorePackageTests.product/Objects.LinkFileList"]
+    description: "Write auxiliary file /Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCorePackageTests.product/Objects.LinkFileList"
+
+  "/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCoreTests.build/sources":
+    tool: write-auxiliary-file
+    inputs: ["<sources-file-list>","/Users/leahsaris/bugle-weather/BugleCore/Tests/BugleCoreTests/GradeEngineTests.swift"]
+    outputs: ["/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCoreTests.build/sources"]
+    description: "Write auxiliary file /Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCoreTests.build/sources"
+
+  "/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/bugle-backtest-entitlement.plist":
+    tool: write-auxiliary-file
+    inputs: ["<entitlement-plist>","<com.apple.security.get-task-allow>"]
+    outputs: ["/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/bugle-backtest-entitlement.plist"]
+    description: "Write auxiliary file /Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/bugle-backtest-entitlement.plist"
+
+  "/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/bugle-backtest.product/Objects.LinkFileList":
+    tool: write-auxiliary-file
+    inputs: ["<link-file-list>","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleBacktest.build/main.swift.o","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/ComfortMath.swift.o","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/Grade.swift.o","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/GradeEngine.swift.o","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/NWSAlertsClient.swift.o","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/OpenMeteoClient.swift.o","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/WeatherModels.swift.o","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/WeatherService.swift.o"]
+    outputs: ["/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/bugle-backtest.product/Objects.LinkFileList"]
+    description: "Write auxiliary file /Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/bugle-backtest.product/Objects.LinkFileList"
+
+  "/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt":
+    tool: write-auxiliary-file
+    inputs: ["<swift-get-version>","/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"]
+    outputs: ["/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt"]
+    always-out-of-date: "true"
+    description: "Write auxiliary file /Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt"
+
+  "<BugleBacktest-arm64-apple-macosx-debug.module>":
+    tool: phony
+    inputs: ["/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleBacktest.build/main.swift.o","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/Modules/BugleBacktest.swiftmodule"]
+    outputs: ["<BugleBacktest-arm64-apple-macosx-debug.module>"]
+
+  "<BugleCore-arm64-apple-macosx-debug.module>":
+    tool: phony
+    inputs: ["/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/ComfortMath.swift.o","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/Grade.swift.o","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/GradeEngine.swift.o","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/NWSAlertsClient.swift.o","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/OpenMeteoClient.swift.o","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/WeatherModels.swift.o","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/WeatherService.swift.o","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/Modules/BugleCore.swiftmodule"]
+    outputs: ["<BugleCore-arm64-apple-macosx-debug.module>"]
+
+  "<BugleCorePackageTests-arm64-apple-macosx-debug.module>":
+    tool: phony
+    inputs: ["/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCorePackageTests.build/runner.swift.o","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/Modules/BugleCorePackageTests.swiftmodule"]
+    outputs: ["<BugleCorePackageTests-arm64-apple-macosx-debug.module>"]
+
+  "<BugleCorePackageTests-arm64-apple-macosx-debug.test>":
+    tool: phony
+    inputs: ["/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCorePackageTests.xctest/Contents/MacOS/BugleCorePackageTests"]
+    outputs: ["<BugleCorePackageTests-arm64-apple-macosx-debug.test>"]
+
+  "<BugleCoreTests-arm64-apple-macosx-debug.module>":
+    tool: phony
+    inputs: ["/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCoreTests.build/GradeEngineTests.swift.o","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/Modules/BugleCoreTests.swiftmodule"]
+    outputs: ["<BugleCoreTests-arm64-apple-macosx-debug.module>"]
+
+  "<bugle-backtest-arm64-apple-macosx-debug.exe>":
+    tool: phony
+    inputs: ["<bugle-backtest-arm64-apple-macosx-debug.exe-CodeSigning>"]
+    outputs: ["<bugle-backtest-arm64-apple-macosx-debug.exe>"]
+
+  "C.BugleBacktest-arm64-apple-macosx-debug.module":
+    tool: shell
+    inputs: ["/Users/leahsaris/bugle-weather/BugleCore/Sources/BugleBacktest/main.swift","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/Modules/BugleCore.swiftmodule","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleBacktest.build/sources"]
+    outputs: ["/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleBacktest.build/main.swift.o","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/Modules/BugleBacktest.swiftmodule"]
+    description: "Compiling Swift Module 'BugleBacktest' (1 sources)"
+    args: ["/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc","-module-name","BugleBacktest","-emit-dependencies","-emit-module","-emit-module-path","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/Modules/BugleBacktest.swiftmodule","-output-file-map","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleBacktest.build/output-file-map.json","-incremental","-c","@/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleBacktest.build/sources","-I","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/Modules","-target","arm64-apple-macosx13.0","-incremental","-enable-batch-mode","-serialize-diagnostics","-index-store-path","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/index/store","-Onone","-enable-testing","-j8","-DSWIFT_PACKAGE","-DDEBUG","-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE","-module-cache-path","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/ModuleCache","-parseable-output","-Xfrontend","-entry-point-function-name","-Xfrontend","BugleBacktest_main","-parse-as-library","-color-diagnostics","-swift-version","5","-plugin-path","/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing","-sdk","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk","-F","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-I","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-L","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-g","-Xcc","-isysroot","-Xcc","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk","-Xcc","-F","-Xcc","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-Xcc","-fPIC","-Xcc","-g","-package-name","buglecore"]
+
+  "C.BugleCore-arm64-apple-macosx-debug.module":
+    tool: shell
+    inputs: ["/Users/leahsaris/bugle-weather/BugleCore/Sources/BugleCore/ComfortMath.swift","/Users/leahsaris/bugle-weather/BugleCore/Sources/BugleCore/Grade.swift","/Users/leahsaris/bugle-weather/BugleCore/Sources/BugleCore/GradeEngine.swift","/Users/leahsaris/bugle-weather/BugleCore/Sources/BugleCore/NWSAlertsClient.swift","/Users/leahsaris/bugle-weather/BugleCore/Sources/BugleCore/OpenMeteoClient.swift","/Users/leahsaris/bugle-weather/BugleCore/Sources/BugleCore/WeatherModels.swift","/Users/leahsaris/bugle-weather/BugleCore/Sources/BugleCore/WeatherService.swift","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/sources"]
+    outputs: ["/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/ComfortMath.swift.o","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/Grade.swift.o","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/GradeEngine.swift.o","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/NWSAlertsClient.swift.o","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/OpenMeteoClient.swift.o","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/WeatherModels.swift.o","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/WeatherService.swift.o","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/Modules/BugleCore.swiftmodule"]
+    description: "Compiling Swift Module 'BugleCore' (7 sources)"
+    args: ["/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc","-module-name","BugleCore","-emit-dependencies","-emit-module","-emit-module-path","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/Modules/BugleCore.swiftmodule","-output-file-map","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/output-file-map.json","-parse-as-library","-incremental","-c","@/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/sources","-I","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/Modules","-target","arm64-apple-macosx13.0","-incremental","-enable-batch-mode","-serialize-diagnostics","-index-store-path","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/index/store","-Onone","-enable-testing","-j8","-DSWIFT_PACKAGE","-DDEBUG","-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE","-module-cache-path","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/ModuleCache","-parseable-output","-parse-as-library","-emit-objc-header","-emit-objc-header-path","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/include/BugleCore-Swift.h","-color-diagnostics","-swift-version","5","-plugin-path","/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing","-sdk","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk","-F","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-I","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-L","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-g","-Xcc","-isysroot","-Xcc","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk","-Xcc","-F","-Xcc","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-Xcc","-fPIC","-Xcc","-g","-package-name","buglecore"]
+
+  "C.BugleCorePackageTests-arm64-apple-macosx-debug.module":
+    tool: shell
+    inputs: ["/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCorePackageTests.derived/runner.swift","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/Modules/BugleCoreTests.swiftmodule","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCorePackageTests.build/sources"]
+    outputs: ["/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCorePackageTests.build/runner.swift.o","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/Modules/BugleCorePackageTests.swiftmodule"]
+    description: "Compiling Swift Module 'BugleCorePackageTests' (1 sources)"
+    args: ["/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc","-module-name","BugleCorePackageTests","-emit-dependencies","-emit-module","-emit-module-path","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/Modules/BugleCorePackageTests.swiftmodule","-output-file-map","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCorePackageTests.build/output-file-map.json","-parse-as-library","-incremental","-c","@/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCorePackageTests.build/sources","-I","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/Modules","-target","arm64-apple-macosx13.0","-incremental","-enable-batch-mode","-serialize-diagnostics","-index-store-path","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/index/store","-Onone","-enable-testing","-Xfrontend","-enable-cross-import-overlays","-j8","-DSWIFT_PACKAGE","-DDEBUG","-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE","-module-cache-path","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/ModuleCache","-parseable-output","-parse-as-library","-emit-objc-header","-emit-objc-header-path","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCorePackageTests.build/include/BugleCorePackageTests-Swift.h","-color-diagnostics","-plugin-path","/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing","-sdk","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk","-F","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-I","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-L","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-g","-Xcc","-isysroot","-Xcc","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk","-Xcc","-F","-Xcc","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-Xcc","-fPIC","-Xcc","-g","-package-name","buglecore"]
+
+  "C.BugleCorePackageTests-arm64-apple-macosx-debug.test":
+    tool: shell
+    inputs: ["/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/ComfortMath.swift.o","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/Grade.swift.o","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/GradeEngine.swift.o","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/NWSAlertsClient.swift.o","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/OpenMeteoClient.swift.o","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/WeatherModels.swift.o","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/WeatherService.swift.o","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCorePackageTests.build/runner.swift.o","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCoreTests.build/GradeEngineTests.swift.o","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCorePackageTests.product/Objects.LinkFileList"]
+    outputs: ["/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCorePackageTests.xctest/Contents/MacOS/BugleCorePackageTests"]
+    description: "Linking ./.build/arm64-apple-macosx/debug/BugleCorePackageTests.xctest/Contents/MacOS/BugleCorePackageTests"
+    args: ["/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc","-L","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug","-o","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCorePackageTests.xctest/Contents/MacOS/BugleCorePackageTests","-module-name","BugleCorePackageTests","-Xlinker","-no_warn_duplicate_libraries","-Xlinker","-bundle","-Xlinker","-rpath","-Xlinker","@loader_path/../../../","@/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCorePackageTests.product/Objects.LinkFileList","-Xlinker","-rpath","-Xlinker","/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift-6.2/macosx","-target","arm64-apple-macosx14.0","-Xlinker","-add_ast_path","-Xlinker","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/Modules/BugleCore.swiftmodule","-Xlinker","-add_ast_path","-Xlinker","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/Modules/BugleCorePackageTests.swiftmodule","-Xlinker","-add_ast_path","-Xlinker","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/Modules/BugleCoreTests.swiftmodule","-plugin-path","/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing","-sdk","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk","-F","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-I","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-L","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-g"]
+
+  "C.BugleCoreTests-arm64-apple-macosx-debug.module":
+    tool: shell
+    inputs: ["/Users/leahsaris/bugle-weather/BugleCore/Tests/BugleCoreTests/GradeEngineTests.swift","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/Modules/BugleCore.swiftmodule","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCoreTests.build/sources"]
+    outputs: ["/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCoreTests.build/GradeEngineTests.swift.o","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/Modules/BugleCoreTests.swiftmodule"]
+    description: "Compiling Swift Module 'BugleCoreTests' (1 sources)"
+    args: ["/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc","-module-name","BugleCoreTests","-emit-dependencies","-emit-module","-emit-module-path","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/Modules/BugleCoreTests.swiftmodule","-output-file-map","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCoreTests.build/output-file-map.json","-parse-as-library","-incremental","-c","@/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCoreTests.build/sources","-I","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/Modules","-target","arm64-apple-macosx14.0","-incremental","-enable-batch-mode","-serialize-diagnostics","-index-store-path","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/index/store","-Onone","-enable-testing","-Xfrontend","-enable-cross-import-overlays","-j8","-DSWIFT_PACKAGE","-DDEBUG","-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE","-module-cache-path","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/ModuleCache","-parseable-output","-parse-as-library","-color-diagnostics","-swift-version","5","-plugin-path","/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing","-sdk","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk","-F","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-I","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-L","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-g","-Xcc","-isysroot","-Xcc","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk","-Xcc","-F","-Xcc","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-Xcc","-fPIC","-Xcc","-g","-package-name","buglecore"]
+
+  "C.bugle-backtest-arm64-apple-macosx-debug.exe":
+    tool: shell
+    inputs: ["/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleBacktest.build/main.swift.o","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/ComfortMath.swift.o","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/Grade.swift.o","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/GradeEngine.swift.o","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/NWSAlertsClient.swift.o","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/OpenMeteoClient.swift.o","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/WeatherModels.swift.o","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/BugleCore.build/WeatherService.swift.o","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/bugle-backtest.product/Objects.LinkFileList"]
+    outputs: ["/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/bugle-backtest"]
+    description: "Linking ./.build/arm64-apple-macosx/debug/bugle-backtest"
+    args: ["/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc","-L","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug","-o","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/bugle-backtest","-module-name","bugle_backtest","-Xlinker","-no_warn_duplicate_libraries","-emit-executable","-Xlinker","-alias","-Xlinker","_BugleBacktest_main","-Xlinker","_main","-Xlinker","-rpath","-Xlinker","@loader_path","@/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/bugle-backtest.product/Objects.LinkFileList","-Xlinker","-rpath","-Xlinker","/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift-6.2/macosx","-target","arm64-apple-macosx13.0","-Xlinker","-add_ast_path","-Xlinker","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/Modules/BugleBacktest.swiftmodule","-Xlinker","-add_ast_path","-Xlinker","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/Modules/BugleCore.swiftmodule","-plugin-path","/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing","-sdk","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk","-F","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-I","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-L","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-g"]
+
+  "C.bugle-backtest-arm64-apple-macosx-debug.exe-entitlements":
+    tool: shell
+    inputs: ["/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/bugle-backtest","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/bugle-backtest-entitlement.plist"]
+    outputs: ["<bugle-backtest-arm64-apple-macosx-debug.exe-CodeSigning>"]
+    description: "Applying debug entitlements to ./.build/arm64-apple-macosx/debug/bugle-backtest"
+    args: ["codesign","--force","--sign","-","--entitlements","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/bugle-backtest-entitlement.plist","/Users/leahsaris/bugle-weather/BugleCore/.build/arm64-apple-macosx/debug/bugle-backtest"]
+
+  "PackageStructure":
+    tool: package-structure-tool
+    inputs: ["/Users/leahsaris/bugle-weather/BugleCore/Sources/BugleBacktest/","/Users/leahsaris/bugle-weather/BugleCore/Sources/BugleCore/","/Users/leahsaris/bugle-weather/BugleCore/Tests/BugleCoreTests/","/Users/leahsaris/bugle-weather/BugleCore/Package.swift","/Users/leahsaris/bugle-weather/BugleCore/Package.resolved"]
+    outputs: ["<PackageStructure>"]
+    description: "Planning build"
+    allow-missing-inputs: true
+

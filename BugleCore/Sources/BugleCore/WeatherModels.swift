@@ -148,11 +148,22 @@ public struct WeatherAlert: Codable, Equatable, Sendable {
     public let event: String
     public let headline: String
     public let severity: String?
+    /// ISO-8601 timestamps from the alert provider. Nil means timing is unknown.
+    public let startsAt: String?
+    public let endsAt: String?
 
-    public init(event: String, headline: String = "", severity: String? = nil) {
+    public init(
+        event: String,
+        headline: String = "",
+        severity: String? = nil,
+        startsAt: String? = nil,
+        endsAt: String? = nil
+    ) {
         self.event = event
         self.headline = headline
         self.severity = severity
+        self.startsAt = startsAt
+        self.endsAt = endsAt
     }
 }
 

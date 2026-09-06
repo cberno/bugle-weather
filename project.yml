@@ -1,0 +1,49 @@
+name: BugleWeather
+options:
+  bundleIdPrefix: com.charleyberno
+  deploymentTarget:
+    iOS: "17.0"
+packages:
+  BugleCore:
+    path: BugleCore
+
+targets:
+  BugleWeather:
+    type: application
+    platform: iOS
+    sources:
+      - path: BugleWeatherApp
+      - path: SharedSupport
+    info:
+      path: BugleWeatherApp/Info.plist
+    entitlements:
+      path: BugleWeatherApp/BugleWeather.entitlements
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.charleyberno.BugleWeather
+        CODE_SIGN_STYLE: Automatic
+        TARGETED_DEVICE_FAMILY: "1"
+    dependencies:
+      - package: BugleCore
+      - target: BugleWeatherWidgetExtension
+        embed: true
+
+  BugleWeatherWidgetExtension:
+    type: app-extension
+    platform: iOS
+    sources:
+      - path: BugleWeatherWidget
+      - path: SharedSupport
+    info:
+      path: BugleWeatherWidget/Info.plist
+    entitlements:
+      path: BugleWeatherWidget/BugleWeatherWidget.entitlements
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.charleyberno.BugleWeather.widget
+        CODE_SIGN_STYLE: Automatic
+        APPLICATION_EXTENSION_API_ONLY: YES
+        SKIP_INSTALL: YES
+        TARGETED_DEVICE_FAMILY: "1"
+    dependencies:
+      - package: BugleCore
